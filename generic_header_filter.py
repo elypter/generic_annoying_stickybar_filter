@@ -76,6 +76,7 @@ for i in range(domain_number):
             filters+=[tld+"##."+prefix+":style(position: relative !important; top: 0 !important;)"]
             filters+=[tld+"###"+prefix+":style(position: relative !important; top: 0 !important;)"]        
         for suffix in suffixes:
+            suffix=suffix.strip()
             if (not prefix==suffix) & (prefix!="") & (suffix!=""):
                 filters+=[tld+"##."+prefix+suffix+":style(position: relative !important; top: 0 !important;)"]
                 filters+=[tld+"##."+prefix+"-"+suffix+":style(position: relative !important; top: 0 !important;)"]
