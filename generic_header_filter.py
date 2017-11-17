@@ -71,10 +71,10 @@ for i in range(domain_number):
     tld="*."+sorted_tlds[i][0]
     print("  "+tld)
     for prefix in prefixes:
-        if not (prefix in dprefixes):        
-            prefix=prefix.strip()
-        filters+=[tld+"##."+prefix+":style(position: relative !important; top: 0 !important;)"]
-        filters+=[tld+"###"+prefix+":style(position: relative !important; top: 0 !important;)"]        
+        prefix=prefix.strip()        
+        if not (prefix in dprefixes):                    
+            filters+=[tld+"##."+prefix+":style(position: relative !important; top: 0 !important;)"]
+            filters+=[tld+"###"+prefix+":style(position: relative !important; top: 0 !important;)"]        
         for suffix in suffixes:
             filters+=[tld+"##."+suffix+":style(position: relative !important; top: 0 !important;)"]
             if (not prefix==suffix) & (prefix!="") & (suffix!=""):
