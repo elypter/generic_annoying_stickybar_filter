@@ -46,6 +46,11 @@ with open("prefixes.txt") as f:
 with open("suffixes.txt") as f:
     suffixes = f.readlines()
 
+#prefixes that must only be used in combination with a suffix
+with open("dprefixes.txt") as f:
+    dprefixes = f.readlines()
+dprefixes = [dprefix.strip() for dprefix in dprefixes] #strip is used here because there is no loop to do it in like for prefixes and suffixes
+
 print("creating list for")
 
 #comments and general data of the filterlist
@@ -63,16 +68,20 @@ filters+=["! "]
 
 #loop over the first x tld domains, all prefixes and suffixes and create combinations with a dash connecting prefix and suffix or without and for bothstyles and classes
 for i in range(domain_number):
-    tld="  "+sorted_tlds[i][0]
-    print(tld)
-    for suffix in suffixes:
-        suffix=suffix.strip()
-        for prefix in prefixes:
-             prefix=prefix.strip()
-             filters+=[tld+"##."+prefix+suffix+":style(position: relative !important; top: 0 !important;)"]
-             filters+=[tld+"##."+prefix+"-"+suffix+":style(position: relative !important; top: 0 !important;)"]
-             filters+=[tld+"###"+prefix+suffix+":style(position: relative !important; top: 0 !important;)",]
-             filters+=[tld+"###"+prefix+"-"+suffix+":style(position: relative !important; top: 0 !important;)"]
+    tld="*."+sorted_tlds[i][0]
+    print("  "+tld)
+    for prefix in prefixes:
+        if not (prefix in dprefixes):        
+            prefix=prefix.strip()
+        filters+=[tld+"##."+prefix+":style(position: relative !important; top: 0 !important;)"]
+        filters+=[tld+"###"+prefix+":style(position: relative !important; top: 0 !important;)"]        
+        for suffix in suffixes:
+            filters+=[tld+"##."+suffix+":style(position: relative !important; top: 0 !important;)"]
+            if (not prefix==suffix) & (prefix!="") & (suffix!=""):
+                filters+=[tld+"##."+prefix+suffix+":style(position: relative !important; top: 0 !important;)"]
+                filters+=[tld+"##."+prefix+"-"+suffix+":style(position: relative !important; top: 0 !important;)"]
+                filters+=[tld+"###"+prefix+suffix+":style(position: relative !important; top: 0 !important;)",]
+                filters+=[tld+"###"+prefix+"-"+suffix+":style(position: relative !important; top: 0 !important;)"]
 
 #if xpath and regex worked a lot of redundancy could be removed. maybe it does but i could not get this to work.
 #for tld in tlds:
