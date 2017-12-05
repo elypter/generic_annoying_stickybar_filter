@@ -11,6 +11,11 @@
 #
 #License: GPL-3.0
 
+#todo:
+#Capital Letters
+#_ underscore
+#singles.txt
+
 domain_number=20 #the top x top level domains to use. the more the more matches but also the bigger the file. 20 results in a 3Mb file
 
 

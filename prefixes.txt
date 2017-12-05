@@ -3,6 +3,7 @@ header
 head
 navigation
 nav
+navbar
 fixed
 fix
 ribbon
@@ -38,6 +39,9 @@ pagenav
 row
 static
 tray
+primary
+persist
+bb
 global
 rail
 tab
@@ -50,3 +54,6 @@ bottom
 panel
 mast
 master
+js
+full
+d-header

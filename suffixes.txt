@@ -8,3 +8,8 @@ banner
 sticky
 navigation
 nav
+default
+custom
+static
+container
+box
